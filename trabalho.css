@@ -1,0 +1,260 @@
+/* grid */
+
+/* 
+.container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    gap: 1rem;
+}
+.header {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+.main {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    overflow: auto;
+}
+.footer {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+*/
+
+/* 1 rem => 1 * fontSize definido no body => normalmente o body tem fontSize automatico de 16px */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.contentor {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 60px auto 50px;
+  gap: 8px;
+  overflow: auto;
+}
+.cabecalho {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background: #ccc;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+}
+
+.rodape {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background-color: transparent;
+}
+.texto-principal {
+  flex: 1;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.fa-film {
+  background: #fff;
+}
+.botaoNav {
+  width: 60px;
+  outline: none;
+  border: 0.5px solid #505050;
+  border-radius: 5px;
+}
+.fa-bars {
+  color: #505050;
+}
+
+/* searchContainerBiggerSize | searchContainerSmallerSize */
+
+/* by default fazes os styles para mobile e adicionas uma mediaquery para quadno chegar a bigger sizes mduar*/
+
+.searchContainerSmallerSize {
+  visibility: visible;
+}
+
+.searchContainerBiggerSize {
+  visibility: hidden;
+}
+
+@media (min-width: 650px) {
+  .searchContainerSmallerSize {
+    visibility: hidden;
+  }
+
+  .searchContainerBiggerSize {
+    visibility: visible;
+  }
+}
+.conteudo {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  width: 100%;
+  overflow: auto;
+}
+
+.grelha {
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    minmax(200px, 300px)
+  ); /* mobile first => 2 cols */
+  grid-auto-rows: auto;
+  gap: 1rem;
+  justify-content: center;
+  align-content: center;
+  align-items: stretch;
+  padding: 40px 10%;
+}
+
+@media (min-width: 768px) {
+  .grelha {
+    grid-template-columns: repeat(3, minmax(200px, 300px));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grelha {
+    grid-template-columns: repeat(4, minmax(200px, 300px));
+  }
+}
+
+.album {
+  height: 500px;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.album:hover {
+  transform: scale(1.1);
+  transition: 0.3s linear;
+  cursor: pointer;
+}
+
+.infoContainer {
+  height: 100px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.movieImage {
+  width: 100%;
+  height: 400px;
+  background: #d0d4ca;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+}
+
+.movieTitle {
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.movieDate {
+  font-size: 14px;
+  font-weight: 300;
+  color: #505050;
+}
+
+.ratingContainer {
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 8px;
+  padding-block: 2px;
+  background-color: #3a6e91;
+  border-radius: 4px;
+  font-size: 11px;
+  color: white;
+  position: absolute;
+  bottom: 16px;
+}
+
+.toastContainer {
+  padding: 1.5rem;
+  background-color: #ff8f8f;
+  position: absolute;
+  width: 70%;
+  top: 65px;
+  left: 50%;
+  border-radius: 1rem;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: white;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 999;
+}
+
+.toastHidded {
+  opacity: 0;
+}
+
+.toastVisible {
+  opacity: 1;
+}
+
+.toastTitulo {
+  font-weight: bold;
+}
+
+.fa-thin {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.notFound {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.zero {
+  padding: 16px 24px;
+  border: 8px solid black;
+  border-radius: 50%;
+  font-size: 72px;
+  font-weight: bold;
+}
+#previousPageBtn {
+  cursor: pointer;
+}
